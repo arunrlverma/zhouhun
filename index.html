@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="粥魂 — 一碗粥，一份暖意">
+    <meta property="og:title" content="粥魂 — Congee Soul">
+    <meta property="og:description" content="粥魂 — 一碗粥，一份暖意">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="粥魂 — Congee Soul">
+    <meta name="twitter:description" content="粥魂 — 一碗粥，一份暖意">
+    <title>粥魂 — Congee Soul</title>
+        <link rel="icon" type="image/jpeg" href="photos/01.雙人幸福分享餐.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #f9f6f1; --bg-main: #ffffff; --bg-card: #f5f2ed; --accent: #8b7355; --accent2: #a0846a; --accent3: #6b5a42; --text: #2a2520; --text-muted: #8a8078; --text-light: #3a3530; --border-dark: #e8e2da;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s, backdrop-filter 0.4s;
+        }
+        nav.scrolled {
+            background: #121114dd;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .nav-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; }
+        .nav-order-btn {
+            background: var(--accent) !important;
+            color: var(--bg-deep) !important;
+            padding: 0.5rem 1.4rem !important;
+            border-radius: 2px;
+            font-weight: 700 !important;
+            opacity: 1 !important;
+            transition: background 0.3s, transform 0.2s !important;
+        }
+        .nav-order-btn:hover {
+            background: var(--accent3) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .hero-text { padding-top: 2rem; }
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+            padding: 0.4rem 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.3s forwards;
+        }
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(3.5rem, 7vw, 6.5rem);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.5s forwards;
+            text-shadow: 0 2px 40px rgba(0,0,0,0.5);
+        }
+        .hero-title .accent { color: var(--accent); }
+        .hero-subtitle {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.7s forwards;
+        }
+        .hero-desc {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: color-mix(in srgb, var(--text) 70%, transparent);
+            max-width: 420px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.9s forwards;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s 1.1s forwards;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: var(--bg-deep);
+            padding: 0.9rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.05em;
+        }
+        .btn-primary:hover {
+            background: var(--accent3);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            padding: 0.9rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid color-mix(in srgb, var(--text) 20%, transparent);
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(4px);
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero featured (layout A) */
+        .hero-content.layout-a {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-featured {
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.2s 0.6s forwards;
+        }
+        .hero-featured-img {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 80px color-mix(in srgb, var(--accent) 15%, transparent), 0 20px 60px rgba(0,0,0,0.5);
+            border: 2px solid color-mix(in srgb, var(--accent) 15%, transparent);
+        }
+        .hero-featured-ring {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            animation: ringPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .hero-featured-ring:nth-child(3) {
+            inset: -45px;
+            animation-delay: 1s;
+            border-color: color-mix(in srgb, var(--accent) 4%, transparent);
+        }
+        @keyframes ringPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* Hero layout B - full bleed */
+        .hero-content.layout-b {
+            display: block;
+            max-width: 700px;
+        }
+
+        /* Hero layout C - centered */
+        .hero-content.layout-c {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-content.layout-c .hero-desc { max-width: 560px; margin-left: auto; margin-right: auto; }
+        .hero-content.layout-c .hero-ctas { justify-content: center; }
+
+        /* Hero layout D - vertical with horizontal scroll */
+        .hero-content.layout-d {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 6rem;
+        }
+        .hero-dishes {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 1.3s forwards;
+        }
+        .hero-dish-card {
+            flex-shrink: 0;
+            width: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+        }
+        .hero-dish-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: filter 0.4s;
+        }
+        .hero-dish-card:hover img { filter: brightness(1); }
+        .hero-dish-label {
+            padding: 0.8rem 1rem;
+            background: var(--bg-card);
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        /* Sections */
+        section { position: relative; }
+        .section-pad { padding: 7rem 8vw; max-width: 1400px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, color-mix(in srgb, var(--accent) 20%, transparent), transparent);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Philosophy layout 1: left image + right cards */
+        .philosophy { background: radial-gradient(ellipse 50% 50% at 20% 50%, color-mix(in srgb, var(--accent2) 5%, transparent), transparent), var(--bg-deep); }
+        .phil-grid-1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .phil-left-img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+            filter: brightness(0.9) contrast(1.05);
+        }
+        .phil-right { display: flex; flex-direction: column; gap: 2rem; }
+        .phil-card {
+            padding: 2.5rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 30%, transparent);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+        .phil-card:hover { border-color: color-mix(in srgb, var(--accent) 20%, transparent); }
+        .phil-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+        .phil-num {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            color: color-mix(in srgb, var(--accent) 12%, transparent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .phil-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+        }
+        .phil-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Philosophy layout 2: centered 3-col */
+        .phil-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .phil-icon-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 20%, transparent);
+            transition: all 0.4s;
+        }
+        .phil-icon-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+            transform: translateY(-4px);
+        }
+        .phil-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .phil-icon-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        .phil-icon-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+
+        /* Philosophy layout 3: alternating rows */
+        .phil-grid-3 { margin-top: 3rem; }
+        .phil-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid color-mix(in srgb, var(--accent) 6%, transparent);
+        }
+        .phil-row:last-child { border-bottom: none; }
+        .phil-row:nth-child(even) { direction: rtl; }
+        .phil-row:nth-child(even) > * { direction: ltr; }
+        .phil-row-img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            filter: brightness(0.85) contrast(1.05);
+        }
+        .phil-row-text h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        .phil-row-num {
+            font-family: 'EB Garamond', serif;
+            font-size: 3.5rem;
+            color: color-mix(in srgb, var(--accent) 10%, transparent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .phil-row-text p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.9;
+        }
+
+        /* Gallery */
+        .gallery { background: var(--bg-main); overflow: hidden; }
+        .gallery .section-pad { padding-bottom: 0; }
+        .gallery-strip {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            animation: galleryScroll 35s linear infinite;
+            width: max-content;
+        }
+        .gallery-strip img {
+            height: 320px;
+            width: auto;
+            object-fit: cover;
+            filter: brightness(0.85) contrast(1.05);
+            transition: filter 0.4s, transform 0.4s;
+            flex-shrink: 0;
+        }
+        .gallery-strip img:hover {
+            filter: brightness(1) contrast(1.1);
+            transform: scale(1.02);
+        }
+        @keyframes galleryScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .gallery-strip:hover { animation-play-state: paused; }
+
+        /* Menu */
+        .menu-section {
+            background: linear-gradient(180deg, var(--bg-deep), var(--bg-main), var(--bg-deep));
+        }
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .menu-item {
+            border: 1px solid color-mix(in srgb, var(--accent) 6%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 20%, transparent);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), var(--accent2));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+        .menu-item:hover {
+            border-color: color-mix(in srgb, var(--accent) 15%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 50%, transparent);
+            transform: translateY(-4px);
+        }
+        .menu-item:hover::after { transform: scaleX(1); }
+        .menu-item-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.9);
+            transition: filter 0.4s, transform 0.6s;
+        }
+        .menu-item:hover .menu-item-img {
+            filter: brightness(1);
+            transform: scale(1.05);
+        }
+        .menu-item-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        .menu-item-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 40px;
+            background: linear-gradient(to top, color-mix(in srgb, var(--bg-card) 80%, transparent), transparent);
+        }
+        .menu-item-body { padding: 1.5rem 2rem 2rem; }
+        .menu-item-name {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+        .menu-item-eng {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-top: 0.3rem;
+        }
+
+        /* Story */
+        .story { background: var(--bg-main); }
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .story-visual { position: relative; overflow: hidden; }
+        .story-visual-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            filter: brightness(0.85) contrast(1.05);
+        }
+        .story-visual-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, #121114ee 0%, transparent 100%);
+        }
+        .story-visual-stat {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+        }
+        .stat-num {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-top: 0.3rem;
+            display: block;
+        }
+        .story-text h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+        .story-text h2 span { color: var(--accent); }
+        .story-paragraphs { display: flex; flex-direction: column; gap: 1.2rem; }
+        .story-paragraphs p {
+            font-size: 0.92rem;
+            line-height: 2;
+            color: color-mix(in srgb, var(--text) 55%, transparent);
+        }
+        .story-signature {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+        }
+        .story-signature-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        .story-signature-title {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-deep);
+            border-top: 1px solid color-mix(in srgb, var(--accent) 6%, transparent);
+        }
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 8vw 3rem;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand-name {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .footer-brand-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+        .footer-col h4 {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid color-mix(in srgb, var(--accent) 6%, transparent);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: color-mix(in srgb, var(--text-muted) 60%, transparent);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content.layout-a { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-featured { display: flex; justify-content: center; order: -1; }
+            .hero-featured-img { max-width: 320px; }
+            .phil-grid-1 { grid-template-columns: 1fr; gap: 3rem; }
+            .phil-left-img { max-height: 400px; }
+            .phil-grid-2 { grid-template-columns: 1fr; }
+            .phil-row { grid-template-columns: 1fr; gap: 2rem; }
+            .phil-row:nth-child(even) { direction: ltr; }
+            .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .story-visual-img { max-height: 400px; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .gallery-strip img { height: 240px; }
+        }
+        @media (max-width: 768px) {
+            .section-pad { padding: 5rem 6vw; }
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+            .gallery-strip img { height: 180px; }
+            .hero-dishes { gap: 1rem; }
+            .hero-dish-card { width: 180px; }
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* ── Reviews Section ── */
+        .reviews {
+            background: radial-gradient(ellipse 60% 40% at 50% 50%, color-mix(in srgb, var(--accent) 3%, transparent), transparent), var(--bg-deep);
+        }
+        .reviews-header { text-align: center; margin-bottom: 3rem; }
+        .reviews-stats {
+            display: flex; justify-content: center; gap: 4rem;
+            margin: 2.5rem 0 3rem; flex-wrap: wrap;
+        }
+        .review-stat { text-align: center; }
+        .review-stat-num {
+            font-size: 2.5rem; font-weight: 700; color: var(--accent);
+            display: block; line-height: 1.2;
+        }
+        .review-stat-label {
+            font-size: 0.75rem; color: var(--text-muted);
+            letter-spacing: 0.1em; margin-top: 0.4rem; display: block;
+        }
+        .reviews-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; margin-bottom: 2.5rem;
+        }
+        .review-card {
+            padding: 2rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 25%, transparent);
+            position: relative; transition: all 0.4s;
+        }
+        .review-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 20%, transparent);
+            transform: translateY(-3px);
+        }
+        .review-card::before {
+            content: '\201C'; position: absolute; top: 0.8rem; left: 1.2rem;
+            font-size: 3rem; color: color-mix(in srgb, var(--accent) 15%, transparent);
+            font-family: Georgia, serif; line-height: 1;
+        }
+        .review-quote {
+            font-size: 0.95rem; line-height: 1.8; color: var(--text);
+            margin-top: 1.5rem; font-style: italic;
+        }
+        .review-stars { margin-top: 1rem; color: var(--accent); font-size: 0.85rem; letter-spacing: 0.15em; }
+        .review-source { margin-top: 0.5rem; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; }
+        .reviews-tags { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+        .review-tag {
+            font-size: 0.72rem; padding: 0.4rem 1rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+            color: var(--accent); letter-spacing: 0.08em;
+            background: color-mix(in srgb, var(--accent) 4%, transparent);
+        }
+
+        /* === ZEN LIGHT THEME Customizations === */
+        body {
+            background: #f9f6f1 !important;
+            color: #2a2520 !important;
+        }
+        body::after {
+            opacity: 0 !important;
+        }
+        /* Remove ALL borders, extreme whitespace */
+        nav {
+            background: rgba(249,246,241,0.95) !important;
+            backdrop-filter: blur(20px) !important;
+        }
+        nav.scrolled {
+            background: rgba(249,246,241,0.98) !important;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+        }
+        .nav-logo { color: #2a2520 !important; }
+        .nav-links a { color: #2a2520 !important; }
+        .nav-order-btn {
+            background: #2a2520 !important;
+            color: #f9f6f1 !important;
+        }
+        .section-pad {
+            padding: 10rem 10vw !important;
+        }
+        .hero-bg {
+            background: linear-gradient(to top, #f9f6f1 0%, rgba(249,246,241,0.7) 40%, rgba(249,246,241,0.3) 100%) !important;
+        }
+        .hero-title {
+            color: #2a2520 !important;
+            text-shadow: none !important;
+        }
+        .hero-subtitle { color: #8a8078 !important; }
+        .hero-desc { color: rgba(42,37,32,0.6) !important; }
+        .hero-badge {
+            color: #8b7355 !important;
+            border-color: rgba(139,115,85,0.2) !important;
+        }
+        .btn-primary {
+            background: #2a2520 !important;
+            color: #f9f6f1 !important;
+        }
+        .btn-secondary {
+            color: #2a2520 !important;
+            border-color: rgba(42,37,32,0.15) !important;
+            background: transparent !important;
+        }
+        /* Remove all borders, use only shadows and spacing */
+        .philosophy { background: #f9f6f1 !important; }
+        .gallery { background: #ffffff !important; }
+        .menu-section { background: #f9f6f1 !important; }
+        .story { background: #ffffff !important; }
+        footer { background: #f9f6f1 !important; border-top: none !important; }
+        .divider { background: linear-gradient(to right, transparent, rgba(139,115,85,0.1), transparent) !important; }
+        .section-title { color: #2a2520 !important; }
+        .section-label { color: #8b7355 !important; }
+        .section-subtitle { color: #8a8078 !important; }
+        .gallery-strip img {
+            border-radius: 16px;
+        }
+        .menu-grid {
+            display: flex !important;
+            overflow-x: auto !important;
+            gap: 3rem !important;
+            padding-bottom: 1.5rem;
+        }
+        .menu-grid .menu-item {
+            flex-shrink: 0;
+            width: 320px;
+            border: none !important;
+            background: #ffffff !important;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.02);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .menu-grid .menu-item:hover {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .menu-item::after { display: none !important; }
+        .menu-item-name { color: #2a2520 !important; }
+        .menu-item-eng { color: #8a8078 !important; }
+        .menu-item-body { background: #ffffff !important; }
+        .menu-grid::-webkit-scrollbar { height: 4px; }
+        .menu-grid::-webkit-scrollbar-thumb { background: #e8e2da; border-radius: 2px; }
+        /* Philosophy cards: no borders, just subtle shadows */
+        .phil-card, .phil-icon-card {
+            border: none !important;
+            background: #ffffff !important;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.03) !important;
+        }
+        .phil-card::before { background: linear-gradient(to bottom, #8b7355, transparent) !important; }
+        .phil-card h3, .phil-icon-card h3 { color: #2a2520 !important; }
+        .phil-card p, .phil-icon-card p { color: #8a8078 !important; }
+        /* Review cards light */
+        .review-card {
+            border: none !important;
+            background: #ffffff !important;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.03) !important;
+        }
+        .review-quote { color: #2a2520 !important; }
+        .review-stars { color: #8b7355 !important; }
+        /* Story section light */
+        .story-text h2 { color: #2a2520 !important; }
+        .story-text h2 span { color: #8b7355 !important; }
+        .story-paragraphs p { color: rgba(42,37,32,0.55) !important; }
+        .story-signature-name { color: #2a2520 !important; }
+        .story-visual-overlay { background: linear-gradient(to top, rgba(249,246,241,0.9) 0%, transparent 100%) !important; }
+        .stat-num { color: #8b7355 !important; }
+        /* Footer light */
+        .footer-brand-name { color: #2a2520 !important; }
+        .footer-desc { color: #8a8078 !important; }
+        .footer-bottom { border-top-color: rgba(0,0,0,0.05) !important; }
+            .menu-grid .menu-item:nth-child(n+7) { display: none; }
+
+        /* ── Mobile Slide Menu ── */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 200;
+            opacity: 0;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .mobile-overlay.open { opacity: 1; }
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -280px;
+            width: 280px;
+            height: 100%;
+            background: var(--bg-deep, #0f0c08);
+            z-index: 201;
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2.5rem 2rem;
+        }
+        .mobile-menu.open { right: 0; }
+        .mobile-menu a {
+            color: var(--text, #f5ead6);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: block;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        .mobile-menu a:hover {
+            color: var(--accent, #e8a849);
+            padding-left: 0.5rem;
+        }
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-muted, #8a7e72);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .mobile-menu-close:hover { color: var(--text, #f5ead6); }
+        @media (min-width: 769px) {
+            .mobile-overlay, .mobile-menu { display: none !important; }
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+/* SEO ENHANCEMENTS */
+
+        .subpage-hero {
+            padding: 11rem 8vw 4rem;
+            background: radial-gradient(ellipse 60% 50% at 20% 10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent), var(--bg-deep);
+        }
+        .subpage-kicker {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .subpage-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .subpage-desc {
+            max-width: 720px;
+            color: color-mix(in srgb, var(--text) 72%, transparent);
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+        .breadcrumbs {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .subpage-body {
+            padding: 0 8vw 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .content-card {
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 24%, transparent);
+            padding: 1.6rem;
+        }
+        .content-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .content-card p {
+            color: color-mix(in srgb, var(--text) 70%, transparent);
+            line-height: 1.8;
+            font-size: 0.92rem;
+        }
+        .content-card ul {
+            margin-top: 0.75rem;
+            padding-left: 1.1rem;
+            color: color-mix(in srgb, var(--text) 70%, transparent);
+            line-height: 1.85;
+        }
+        .subpage-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .subpage-menu-item {
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 24%, transparent);
+            overflow: hidden;
+        }
+        .subpage-menu-item img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+        .subpage-menu-copy {
+            padding: 1.2rem 1.3rem 1.4rem;
+        }
+        .subpage-menu-copy h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+        .subpage-menu-copy p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.85rem;
+        }
+        .faq-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .faq-item {
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 24%, transparent);
+            padding: 1.4rem 1.6rem;
+        }
+        .faq-item h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.02rem;
+            margin-bottom: 0.75rem;
+        }
+        .faq-item p {
+            color: color-mix(in srgb, var(--text) 72%, transparent);
+            line-height: 1.85;
+        }
+        .location-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .location-toolbar {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1.2rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 28%, transparent);
+        }
+        .location-toolbar-top {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .location-search {
+            flex: 1 1 340px;
+            min-width: 240px;
+        }
+        .location-search input {
+            width: 100%;
+            border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
+            background: color-mix(in srgb, var(--bg-deep) 58%, transparent);
+            color: var(--text);
+            padding: 0.95rem 1rem;
+            font-size: 0.92rem;
+            outline: none;
+        }
+        .location-search input::placeholder {
+            color: color-mix(in srgb, var(--text-muted) 72%, transparent);
+        }
+        .location-tools {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .location-tool-btn {
+            border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
+            background: transparent;
+            color: var(--text);
+            padding: 0.8rem 1rem;
+            font-size: 0.84rem;
+            cursor: pointer;
+            transition: border-color 0.25s, color 0.25s, background 0.25s;
+        }
+        .location-tool-btn:hover,
+        .location-tool-btn.is-active {
+            border-color: color-mix(in srgb, var(--accent) 26%, transparent);
+            color: var(--accent);
+            background: color-mix(in srgb, var(--accent) 8%, transparent);
+        }
+        .location-toolbar-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.7;
+        }
+        .location-stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+            padding: 0.35rem 0.6rem;
+            color: var(--text);
+        }
+        .location-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem 1.2rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 24%, transparent);
+        }
+        .location-copy {
+            min-width: 0;
+        }
+        .location-title {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .location-title strong {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.05rem;
+        }
+        .location-meta {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            margin-top: 0.3rem;
+            line-height: 1.7;
+        }
+        .location-badges {
+            display: flex;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+            margin-top: 0.65rem;
+        }
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.55rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
+            color: color-mix(in srgb, var(--text) 76%, transparent);
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+        }
+        .location-badge.is-direct {
+            color: var(--accent);
+            border-color: color-mix(in srgb, var(--accent) 24%, transparent);
+            background: color-mix(in srgb, var(--accent) 8%, transparent);
+        }
+        .location-actions {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .location-link-secondary {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+        }
+        .location-row a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .location-no-results {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px dashed color-mix(in srgb, var(--accent) 12%, transparent);
+            color: var(--text-muted);
+        }
+        .related-sites {
+            margin-top: 3rem;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+        .related-card {
+            display: block;
+            text-decoration: none;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 24%, transparent);
+            padding: 1.2rem 1.3rem;
+            color: var(--text);
+            transition: transform 0.25s, border-color 0.25s;
+        }
+        .related-card:hover {
+            transform: translateY(-2px);
+            border-color: color-mix(in srgb, var(--accent) 24%, transparent);
+        }
+        .related-card small {
+            color: var(--text-muted);
+            display: block;
+            margin-top: 0.3rem;
+            line-height: 1.6;
+        }
+        .page-actions {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .seo-explore {
+            padding: 3.5rem 8vw 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .seo-explore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.4rem;
+        }
+        .seo-explore-card {
+            display: block;
+            text-decoration: none;
+            padding: 1.25rem 1.3rem;
+            border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+            background: color-mix(in srgb, var(--bg-card) 22%, transparent);
+            color: var(--text);
+        }
+        .seo-explore-card span {
+            display: block;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 0.35rem;
+            font-size: 0.84rem;
+        }
+        @media (max-width: 700px) {
+            .subpage-hero { padding-top: 8.5rem; }
+            .location-row { flex-direction: column; align-items: flex-start; }
+            .location-toolbar-top { flex-direction: column; align-items: stretch; }
+        }
+
+    </style>
+<!-- SEO HEAD START -->
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:url" content="https://zhouhunfood.com">
+    <meta property="og:image" content="https://zhouhunfood.com/photos/01.%E9%9B%99%E4%BA%BA%E5%B9%B8%E7%A6%8F%E5%88%86%E4%BA%AB%E9%A4%90.jpg">
+    <meta name="twitter:image" content="https://zhouhunfood.com/photos/01.%E9%9B%99%E4%BA%BA%E5%B9%B8%E7%A6%8F%E5%88%86%E4%BA%AB%E9%A4%90.jpg">
+    <link rel="canonical" href="https://zhouhunfood.com">
+        <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "粥魂", "alternateName": "Congee Soul", "url": "https://zhouhunfood.com", "logo": "https://zhouhunfood.com/photos/01.%E9%9B%99%E4%BA%BA%E5%B9%B8%E7%A6%8F%E5%88%86%E4%BA%AB%E9%A4%90.jpg"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "粥魂", "url": "https://zhouhunfood.com", "inLanguage": "zh-Hant"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "粥魂 官方品牌站", "url": "https://zhouhunfood.com", "isPartOf": {"@type": "WebSite", "url": "https://zhouhunfood.com"}, "inLanguage": "zh-Hant"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "粥魂", "item": "https://zhouhunfood.com"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "粥魂 菜單精選", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "三人滿足分享餐"}, {"@type": "ListItem", "position": 2, "name": "三人滿足分享餐 Combo for 3"}, {"@type": "ListItem", "position": 3, "name": "吻仔魚瘦肉粥"}, {"@type": "ListItem", "position": 4, "name": "吻仔魚粥"}, {"@type": "ListItem", "position": 5, "name": "廣東皮蛋粥"}, {"@type": "ListItem", "position": 6, "name": "廣東粥"}, {"@type": "ListItem", "position": 7, "name": "海鮮瘦肉粥"}, {"@type": "ListItem", "position": 8, "name": "特製海鮮粥 Seafood Congee"}, {"@type": "ListItem", "position": 9, "name": "玉米瘦肉粥"}, {"@type": "ListItem", "position": 10, "name": "皮蛋瘦肉粥"}, {"@type": "ListItem", "position": 11, "name": "綜合粥"}, {"@type": "ListItem", "position": 12, "name": "雙人幸福分享餐 Combo for 2"}]}</script>
+<!-- SEO HEAD END -->
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <a href="/" class="nav-logo">粥魂</a>
+    <div class="nav-links">
+        <a href="/">首頁</a>
+        <a href="/menu/">菜單</a>
+        <a href="/reviews/">評價</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/locations/">門市</a>
+        <a href="/locations/" class="nav-order-btn">立即訂購</a>
+    </div>
+</nav>
+
+<!-- Mobile Slide Menu -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">&times;</button>
+    <a href="#philosophy" onclick="closeMobileMenu()">理念</a>
+    <a href="#reviews" onclick="closeMobileMenu()">評價</a>
+    <a href="#menu" onclick="closeMobileMenu()">菜單</a>
+    <a href="#gallery" onclick="closeMobileMenu()">相簿</a>
+    <a href="#story" onclick="closeMobileMenu()">故事</a>
+</div>
+
+
+
+<section class="hero">
+    <div class="hero-img" style="background-image: url('photos/05.皮蛋瘦肉粥.jpg');"></div>
+    <div class="hero-bg" style="background: linear-gradient(to top, var(--bg-deep) 0%, color-mix(in srgb, var(--bg-deep) 70%, transparent) 40%, color-mix(in srgb, var(--bg-deep) 40%, transparent) 100%);"></div>
+    <div class="hero-content layout-b">
+        <div class="hero-text">
+            <span class="hero-badge">台灣 · Soul of the Porridge</span>
+            <h1 class="hero-title"><span class="accent">粥魂</span></h1>
+            <p class="hero-subtitle">Soul of the Porridge</p>
+            <p class="hero-desc">一碗粥，一份暖意</p>
+            <div class="hero-ctas">
+                <a href="#menu" class="btn-primary">瀏覽菜單</a>
+                <a href="#philosophy" class="btn-secondary">了解更多 &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="reviews" id="reviews">
+    <div class="section-pad">
+        <div class="reviews-header reveal">
+            <span class="section-label">Customer Reviews</span>
+            <h2 class="section-title">顧客真心推薦</h2>
+        </div>
+        <div class="reviews-stats reveal" style="transition-delay: 0.1s;">
+            <div class="review-stat">
+                <span class="review-stat-num">4.7</span>
+                <span class="review-stat-label">平均評分 / 5.0</span>
+            </div>
+            <div class="review-stat">
+                <span class="review-stat-num">4,250</span>
+                <span class="review-stat-label">顧客評價</span>
+            </div>
+            <div class="review-stat">
+                <span class="review-stat-num">87.0%</span>
+                <span class="review-stat-label">五星好評</span>
+            </div>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal" style="transition-delay: 0.0s;">
+                <p class="review-quote">我可以天天吃 好吃 超級好吃😭😭😭</p>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source">— Uber Eats 顧客</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.1s;">
+                <p class="review-quote">好吃，救了一個腸胃炎可悲仔的幸福</p>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source">— Uber Eats 顧客</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.2s;">
+                <p class="review-quote">店家真的很貼心 也跟店家告知手術要吃的都幫我料切的小小的 真的很感動</p>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source">— Uber Eats 顧客</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.30000000000000004s;">
+                <p class="review-quote">有在看備注 愛死了😭</p>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source">— Uber Eats 顧客</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.4s;">
+                <p class="review-quote">口味適中 好吃</p>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source">— Uber Eats 顧客</div>
+            </div>
+            <div class="review-card reveal" style="transition-delay: 0.5s;">
+                <p class="review-quote">好吃 相對便宜</p>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-source">— Uber Eats 顧客</div>
+            </div>
+        </div>
+        <div class="reviews-tags reveal"><span class="review-tag">品質穩定</span>
+            <span class="review-tag">服務可靠</span>
+            <span class="review-tag">方便快速</span>
+            <span class="review-tag">豐富選擇</span>
+            <span class="review-tag">環保包裝</span>
+            </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+
+<section class="philosophy" id="philosophy">
+    <div class="section-pad">
+        <div style="text-align: center; margin-bottom: 1rem;" class="reveal">
+            <span class="section-label">Our Philosophy</span>
+            <h2 class="section-title" style="margin-left:auto;margin-right:auto;">粥魂的堅持</h2>
+            <p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center;">慢火細熬，一碗粥裡藏著一個魂</p>
+        </div>
+        <div class="phil-grid-2">
+
+            <div class="phil-icon-card reveal" style="transition-delay: 0.0s;">
+                <span class="phil-icon">🫕</span>
+                <h3>慢火煲粥</h3>
+                <p>廣東粥講究「綿、滑、稠」。我們以小火慢煲數小時，讓米粒完全融化成絲綢般的口感，每一口都是時間的味道。</p>
+            </div>
+            <div class="phil-icon-card reveal" style="transition-delay: 0.15s;">
+                <span class="phil-icon">🌡️</span>
+                <h3>療癒暖食</h3>
+                <p>生病時想喝粥、疲憊時想喝粥、想家時也想喝粥。粥魂要做的，就是那碗讓你從胃暖到心的療癒之味。</p>
+            </div>
+            <div class="phil-icon-card reveal" style="transition-delay: 0.3s;">
+                <span class="phil-icon">🥢</span>
+                <h3>廣東正統</h3>
+                <p>從經典廣東粥、皮蛋瘦肉粥到海鮮粥，每一碗都遵循廣式煲粥古法，搭配鍋燒意麵，溫飽一整天。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+
+<section class="gallery" id="gallery">
+    <div class="section-pad">
+        <span class="section-label reveal">Gallery</span>
+        <h2 class="section-title reveal">每一道都是一幅作品</h2>
+    </div>
+    <div class="gallery-strip">
+        <img src="photos/01.雙人幸福分享餐.jpg" alt="雙人幸福分享餐｜粥魂" loading="lazy">
+        <img src="photos/02.三人滿足分享餐.jpg" alt="三人滿足分享餐｜粥魂" loading="lazy">
+        <img src="photos/03.廣東粥.jpg" alt="廣東粥｜粥魂" loading="lazy">
+        <img src="photos/04.廣東皮蛋粥.jpg" alt="廣東皮蛋粥｜粥魂" loading="lazy">
+        <img src="photos/05.皮蛋瘦肉粥.jpg" alt="皮蛋瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/06.玉米瘦肉粥.jpg" alt="玉米瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/07.雞蓉玉米粥.jpg" alt="雞蓉玉米粥｜粥魂" loading="lazy">
+        <img src="photos/08.吻仔魚瘦肉粥.jpg" alt="吻仔魚瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/09.魚片瘦肉粥.jpg" alt="魚片瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/10.海鮮瘦肉粥.jpg" alt="海鮮瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/合照UE.jpg" alt="合照UE｜粥魂" loading="lazy">
+        <img src="photos/11.招牌鍋燒意麵.jpg" alt="招牌鍋燒意麵｜粥魂" loading="lazy">
+        <img src="photos/01.雙人幸福分享餐.jpg" alt="雙人幸福分享餐｜粥魂" loading="lazy">
+        <img src="photos/02.三人滿足分享餐.jpg" alt="三人滿足分享餐｜粥魂" loading="lazy">
+        <img src="photos/03.廣東粥.jpg" alt="廣東粥｜粥魂" loading="lazy">
+        <img src="photos/04.廣東皮蛋粥.jpg" alt="廣東皮蛋粥｜粥魂" loading="lazy">
+        <img src="photos/05.皮蛋瘦肉粥.jpg" alt="皮蛋瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/06.玉米瘦肉粥.jpg" alt="玉米瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/07.雞蓉玉米粥.jpg" alt="雞蓉玉米粥｜粥魂" loading="lazy">
+        <img src="photos/08.吻仔魚瘦肉粥.jpg" alt="吻仔魚瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/09.魚片瘦肉粥.jpg" alt="魚片瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/10.海鮮瘦肉粥.jpg" alt="海鮮瘦肉粥｜粥魂" loading="lazy">
+        <img src="photos/合照UE.jpg" alt="合照UE｜粥魂" loading="lazy">
+        <img src="photos/11.招牌鍋燒意麵.jpg" alt="招牌鍋燒意麵｜粥魂" loading="lazy">
+    </div>
+</section>
+
+<div class="divider"></div>
+
+
+<section class="menu-section" id="menu">
+    <div class="section-pad">
+        <div class="menu-header reveal">
+            <div>
+                <span class="section-label">Menu Highlights</span>
+                <h2 class="section-title">招牌菜單</h2>
+                <p class="section-subtitle">每一道都是我們的驕傲之作</p>
+            </div>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item reveal" style="transition-delay: 0.0s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/02.三人滿足分享餐.jpg" alt="三人滿足分享餐" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">三人滿足分享餐</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.1s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/01.雙人幸福分享餐.jpg" alt="三人滿足分享餐 Combo for 3" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">三人滿足分享餐 Combo for 3</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.2s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/08.吻仔魚瘦肉粥.jpg" alt="吻仔魚瘦肉粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">吻仔魚瘦肉粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.30000000000000004s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/02.三人滿足分享餐.jpg" alt="吻仔魚粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">吻仔魚粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.4s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/04.廣東皮蛋粥.jpg" alt="廣東皮蛋粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">廣東皮蛋粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.5s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/03.廣東粥.jpg" alt="廣東粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">廣東粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.0s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/10.海鮮瘦肉粥.jpg" alt="海鮮瘦肉粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">海鮮瘦肉粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.1s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/03.廣東粥.jpg" alt="特製海鮮粥 Seafood Congee" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">特製海鮮粥 Seafood Congee</span>
+                    <div class="menu-item-eng">Assorted</div>
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.2s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/06.玉米瘦肉粥.jpg" alt="玉米瘦肉粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">玉米瘦肉粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.30000000000000004s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/05.皮蛋瘦肉粥.jpg" alt="皮蛋瘦肉粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">皮蛋瘦肉粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.4s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/04.廣東皮蛋粥.jpg" alt="綜合粥" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">綜合粥</span>
+                    
+                </div>
+            </div>
+            <div class="menu-item reveal" style="transition-delay: 0.5s;">
+                <div class="menu-item-img-wrap">
+                    <img class="menu-item-img" src="photos/01.雙人幸福分享餐.jpg" alt="雙人幸福分享餐 Combo for 2" loading="lazy">
+                </div>
+                <div class="menu-item-body">
+                    <span class="menu-item-name">雙人幸福分享餐 Combo for 2</span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div><section class="story" id="story">
+    <div class="section-pad">
+        <div class="story-grid">
+            <div class="story-visual reveal">
+                <img class="story-visual-img" src="photos/03.廣東粥.jpg" alt="廣東粥｜粥魂" loading="lazy">
+                <div class="story-visual-overlay">
+                    <div class="story-visual-stat">
+                        <div class="stat-item">
+                            <span class="stat-num">2023</span>
+                            <span class="stat-label">創立年份</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">6+</span>
+                            <span class="stat-label">招牌口味</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-text reveal" style="transition-delay: 0.2s;">
+                <span class="section-label">Our Story</span>
+                <h2>關於<br><span>粥魂</span></h2>
+                <div class="story-paragraphs">
+                    <p>粥，是華人世界最古老的療癒食物。一碗熱粥能暖胃、能養身、能撫慰疲憊的靈魂——這就是「粥魂」名字的由來。</p>
+                    <p>我們傳承廣東煲粥的精髓，堅持慢火細熬，讓米粒化為綿密的粥底。無論是經典的皮蛋瘦肉粥、鮮甜的海鮮粥，還是暖心的雞蓉玉米粥，每一碗都是數小時耐心等候的成果。搭配我們的招牌鍋燒意麵，一份簡單的餐點就能帶來滿滿的幸福感。</p>
+                    <p>在忙碌的日常裡，讓粥魂為你煲一碗好粥，找回那份久違的溫暖與安心。</p>
+                </div>
+                <div class="story-signature">
+                    <div class="story-signature-name">粥魂團隊</div>
+                    <div class="story-signature-title">— 一碗好粥，暖胃更暖心</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SEO EXPLORE START -->
+<section class="seo-explore">
+    <span class="section-label">Explore More</span>
+    <h2 class="section-title">從首頁延伸閱讀更多品牌內容</h2>
+    <div class="seo-explore-grid">
+        <a class="seo-explore-card" href="/menu/">
+            <strong>完整菜單頁</strong>
+            <span>整理招牌料理與品牌代表品項，承接品牌 + 菜單搜尋。</span>
+        </a>
+        <a class="seo-explore-card" href="/reviews/">
+            <strong>顧客評價頁</strong>
+            <span>把評價與口碑做成獨立頁，讓搜尋品牌評價的使用者更快建立信任。</span>
+        </a>
+        <a class="seo-explore-card" href="/faq/">
+            <strong>常見問題頁</strong>
+            <span>回答第一次點什麼、口味風格、招牌菜等高意圖問題。</span>
+        </a>
+        <a class="seo-explore-card" href="/locations/">
+            <strong>門市據點頁</strong>
+            <span>整理品牌門市與外送據點，承接品牌 + 門市相關搜尋。</span>
+        </a>
+    </div>
+</section>
+<!-- SEO EXPLORE END -->
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">粥魂</div>
+                <p class="footer-brand-desc">一碗粥，一份暖意 透過外送平台將美味直送到你手中。</p>
+            </div>
+            <div class="footer-col">
+                <h4>導覽</h4>
+                <a href="#philosophy">品牌理念</a>
+                <a href="#menu">招牌菜單</a>
+                <a href="#gallery">美食相簿</a>
+                <a href="#story">品牌故事</a>
+            </div>
+            <div class="footer-col">
+                <h4>外送平台</h4>
+                <a href="https://www.ubereats.com" target="_blank" rel="noopener">Uber Eats</a>
+                <a href="https://www.foodpanda.com.tw" target="_blank" rel="noopener">foodpanda</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copy">&copy; 2026 粥魂 Congee Soul. All rights reserved.</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Mobile menu
+    function openMobileMenu() {
+        document.getElementById('mobileOverlay').style.display = 'block';
+        document.getElementById('mobileMenu').style.display = 'flex';
+        requestAnimationFrame(() => {
+            document.getElementById('mobileOverlay').classList.add('open');
+            document.getElementById('mobileMenu').classList.add('open');
+        });
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+        document.getElementById('mobileOverlay').classList.remove('open');
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            document.getElementById('mobileOverlay').style.display = 'none';
+        }, 350);
+    }
+
+
+</script>
+
+
+</body>
+</html>
